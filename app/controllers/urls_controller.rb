@@ -9,6 +9,7 @@ class UrlsController < ApplicationController
   end
 
   # GET /urls/1 or /urls/1.json
+  # GET short_name.example.com
   def show
     @url = Url.find_by(short_url: request.subdomain)
     if @url
