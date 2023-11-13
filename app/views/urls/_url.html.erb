@@ -6,7 +6,8 @@
 
   <p>
     <strong>Short url:</strong>
-    <%= link_to "#{request.protocol}#{url.short_url}.#{hostname_de_admintrator(request)}" %>
+    <% short_link = "#{request.protocol}#{url.short_url}.#{hostname_de_admintrator(request)}" %>
+    <%= link_to short_link, short_link %>
   </p>
 
 </div>

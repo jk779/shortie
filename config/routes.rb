@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     get '/', to: 'publics#show'
   end
 
-  #get '/', to: '', constraints: { subdomain: /.+/ }
+  # get '/', to: '', constraints: { subdomain: /.+/ }
   resources :urls
-
 end

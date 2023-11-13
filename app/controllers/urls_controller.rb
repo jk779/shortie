@@ -10,8 +10,7 @@ class UrlsController < ApplicationController
 
   # GET /urls/1 or /urls/1.json
   # GET short_name.example.com
-  def show
-  end
+  def show; end
 
   # GET /urls/new
   def new
