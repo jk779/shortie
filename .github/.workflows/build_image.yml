@@ -1,0 +1,50 @@
+name: Update the image
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 4 1-31/7 * *'
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_alpine:
+    name: Prepare image, remove dev deps, push
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Get date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Execute Dockerfile
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            jk779/shortie:${{ steps.date.outputs.date }}-alpine-sha-${{ github.sha }}
+            jk779/shortie:${{ steps.date.outputs.date }}-alpine
+            jk779/shortie:latest-alpine
+            jk779/shortie:latest
+          labels: |
+            build_date=${{ steps.date.outputs.date }}
+            maintainer="jk779"
+            source=https://github.com/jk779/shortie
+            vcs_ref=${{ github.sha }}
