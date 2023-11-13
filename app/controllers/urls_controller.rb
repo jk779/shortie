@@ -13,7 +13,7 @@ class UrlsController < ApplicationController
   def show
     @url = Url.find_by(short_url: request.subdomain)
     if @url
-      redirect_to @url.original_url, status: 302
+      redirect_to @url.original_url, status: 302, allow_other_host: true
     else
       render text: 'Not found 🌚🌚', status: :not_found
     end

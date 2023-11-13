@@ -55,3 +55,10 @@ jobs:
             maintainer="jk779"
             source=https://github.com/jk779/shortie
             vcs_ref=${{ github.sha }}
+
+
+
+
+https://portainer-he1:
+  srv:
+    gdn/api/stacks/webhooks/053e0410-e84c-4dff-a43b-adf11f675ad7:
