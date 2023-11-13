@@ -1,4 +1,4 @@
-FROM ruby:3.0.2-alpine
+FROM ruby:3.2.2-alpine
 
 # Install necessary libraries
 RUN apk add --update --no-cache build-base tzdata
@@ -16,7 +16,7 @@ WORKDIR $INSTALL_PATH
 # drastically increase build times when your gems do not change.
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
-RUN bundle install --binstubs
+RUN bundle install --binstubs --verbose
 
 # Copy in the application code from your host to your docker image.
 COPY . .
