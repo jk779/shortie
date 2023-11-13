@@ -1,8 +1,8 @@
-class Fu
-  rlsController < ApplicationController
-  def show
+# frozen_string_literal: true
 
-  end
+class Fu
+  rlsController
+  def show; end
 
   def create
     @url = Url.new(url_params)

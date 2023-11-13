@@ -1,0 +1,66 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+  Exclude:
+    - db/*
+    - bin/*
+    - tmp/**/*
+    - log/
+  SuggestExtensions:
+    rubocop-rspec: false
+
+Metrics/BlockLength:
+  AllowedMethods: ['describe', 'context', 'shared_examples', 'it', 'let', 'define', 'factory', 'it_behaves_like', 'configure', 'trait', 'after']
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*
+
+Metrics/AbcSize:
+  Max: 20
+
+Style/Documentation:
+  Enabled: false
+
+Style/StructInheritance:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: start_of_line
+
+Layout/CaseIndentation:
+  EnforcedStyle: end
+
+Lint/EmptyBlock:
+  Enabled: false
+
+# Although this is probably going to cause migration problems (while
+# developing), it's often not possible to set a sensible default.
+#
+# Consider consolidating all migrations when the app is productive and remove
+# this directive.
+Rails/NotNullColumn:
+  Exclude:
+    - db/migrate/*
+
+Rails/BulkChangeTable:
+  Exclude:
+    - db/migrate/*
+
+Rails/I18nLocaleTexts:
+  Enabled: false
