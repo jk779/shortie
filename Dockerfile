@@ -16,7 +16,7 @@ WORKDIR $INSTALL_PATH
 # drastically increase build times when your gems do not change.
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
-RUN bundle install --binstubs --verbose
+RUN bundle install --binstubs --verbose --jobs 6
 
 # Copy in the application code from your host to your docker image.
 COPY . .
