@@ -12,11 +12,8 @@ class UrlsController < ApplicationController
   # GET short_name.example.com
   def show
     @url = Url.find_by(short_url: request.subdomain)
-    if @url
-      redirect_to @url.original_url, allow_other_host: true, status: 302
-    else
-      render text: 'Not found 🌚🌚', status: :not_found
-    end
+
+    render text: 'Not found 🌚🌚', status: :not_found unless @url
   end
 
   # GET /urls/new
