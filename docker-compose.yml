@@ -13,9 +13,17 @@ services:
     #   - "3000:3000"
 
   cloudflared-tunnel:
-    container_name: cf-tunnel-shortie
+    container_name: cf-tunnel-shortie-pub
     image: cloudflare/cloudflared
     restart: unless-stopped
     command: tunnel run
     environment:
-      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+      - TUNNEL_TOKEN=${PUB_TUNNEL_TOKEN}
+
+  cloudflared-tunnel:
+    container_name: cf-tunnel-shortie-admin
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${ADMIN_TUNNEL_TOKEN}
