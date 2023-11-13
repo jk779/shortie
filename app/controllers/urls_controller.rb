@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UrlsController < ApplicationController
-  before_action :set_url, only: %i[edit update destroy]
+  before_action :set_url, only: %i[show edit update destroy]
 
   # GET /urls or /urls.json
   def index
@@ -11,9 +11,6 @@ class UrlsController < ApplicationController
   # GET /urls/1 or /urls/1.json
   # GET short_name.example.com
   def show
-    @url = Url.find_by(short_url: request.subdomain)
-
-    render text: 'Not found 🌚🌚', status: :not_found unless @url
   end
 
   # GET /urls/new

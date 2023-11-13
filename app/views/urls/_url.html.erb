@@ -1,12 +1,13 @@
 <div id="<%= dom_id url %>">
   <p>
     <strong>Original url:</strong>
-    <%= url.original_url %>
+    <%= link_to url.original_url %>
   </p>
 
   <p>
     <strong>Short url:</strong>
-    <%= url.short_url %>
+    <%# binding.pry %>
+    <%= link_to "#{request.protocol}#{url.short_url}.#{request.raw_host_with_port}" %>
   </p>
 
 </div>

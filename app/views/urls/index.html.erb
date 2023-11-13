@@ -6,9 +6,11 @@
   <% @urls.each do |url| %>
     <%= render url %>
     <p>
-      <%= link_to "Show this url", url %>
+      <%= link_to "Edit/Delete this url", url %>
     </p>
   <% end %>
 </div>
+
+<hr />
 
 <%= link_to "New url", new_url_path %>

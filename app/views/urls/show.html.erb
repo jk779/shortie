@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @url %>
+<%= "ID: #{@url.id}: #{@url.original_url} → #{@url.short_url}" %>
 
 <div>
   <%= link_to "Edit this url", edit_url_path(@url) %> |

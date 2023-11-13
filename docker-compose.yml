@@ -12,7 +12,7 @@ services:
     # ports:
     #   - "3000:3000"
 
-  cloudflared-tunnel:
+  cloudflared-tunnel-pub:
     container_name: cf-tunnel-shortie-pub
     image: cloudflare/cloudflared
     restart: unless-stopped
@@ -20,7 +20,7 @@ services:
     environment:
       - TUNNEL_TOKEN=${PUB_TUNNEL_TOKEN}
 
-  cloudflared-tunnel:
+  cloudflared-tunnel-admin:
     container_name: cf-tunnel-shortie-admin
     image: cloudflare/cloudflared
     restart: unless-stopped
