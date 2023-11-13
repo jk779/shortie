@@ -1,0 +1,20 @@
+version: '3'
+services:
+  shortie:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - /home/michael/docker/shortie/sql:/app/db
+    environment:
+      RAILS_ENV: production
+      RACK_ENV: production
+    # ports:
+    #   - "3000:3000"
+
+  cloudflared-tunnel:
+    container_name: cf-tunnel-shortie
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
