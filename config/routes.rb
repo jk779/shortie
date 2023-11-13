@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-Rails.application.routes.draw do
-  get '/', to: 'publics#show', constraints: { subdomain: /.+/ }
-  resources :urls
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+require 'subdomain'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  constraints(Subdomain) do
+    get '/', to: 'publics#show'
+  end
+
+  #get '/', to: '', constraints: { subdomain: /.+/ }
+  resources :urls
 
 end

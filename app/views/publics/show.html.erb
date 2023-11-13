@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <html>
+<html>
   <head>
     <style>
       body, html {
@@ -9,7 +9,7 @@
         overflow: hidden;
       }
 
-      #myiframe {
+      #inliner {
         position: absolute;
         left: 0;
         width: 100%;
@@ -19,6 +19,6 @@
     </style>
   </head>
   <body>
-  <iframe id="myiframe" src="<%= @url.short_url %>">"></iframe>
+    <iframe id="inliner" src="<%= @url.original_url %>">"></iframe>
   </body>
 </html>

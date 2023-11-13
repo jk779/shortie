@@ -1,4 +1,5 @@
-# frozen_string_literal: true
+require 'net/http'
+require 'uri'
 
 class PublicsController < ApplicationController
   layout false
@@ -7,6 +8,17 @@ class PublicsController < ApplicationController
   def show
     @url = Url.find_by(short_url: request.subdomain)
 
-    render text: 'Not found 🌚🌚', status: :not_found unless @url
+    if @url
+      uri = URI.parse(@url.original_url)
+      response = Net::HTTP.get_response(uri)
+
+      if ['DENY', 'SAMEORIGIN'].include?(response['X-Frame-Options'])
+        redirect_to @url.original_url, allow_other_host: true, status: 302
+      else
+        render template: 'publics/show'
+      end
+    else
+      render plain: 'Not found 🌚🌚', status: :not_found
+    end
   end
 end
