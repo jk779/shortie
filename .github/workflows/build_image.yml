@@ -34,7 +34,7 @@ jobs:
 
       - name: Get short sha
         id: shortsha
-        run: echo "::set-output name=date::$(${{ github.sha }} | cut -c 1-6)"
+        run: echo "::set-output name=date::$(echo ${{ github.sha }} | cut -c 1-6)"
 
       - name: Execute Dockerfile
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
