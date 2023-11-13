@@ -2,7 +2,6 @@ require 'net/http'
 require 'uri'
 
 class PublicsController < ApplicationController
-  SHORT_LINK_PREFIX = "#{request.protocol}#{request.raw_host_with_port}"
   layout false
 
   # GET short_name.example.com
