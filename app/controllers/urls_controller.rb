@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UrlsController < ApplicationController
-  before_action :set_url, only: %i[show edit update destroy]
+  before_action :set_url, only: %i[edit update destroy]
 
   # GET /urls or /urls.json
   def index
@@ -13,9 +13,9 @@ class UrlsController < ApplicationController
   def show
     @url = Url.find_by(short_url: request.subdomain)
     if @url
-      redirect_to @url.original_url
+      redirect_to @url.original_url, status: 302
     else
-      render text: 'Not found', status: :not_found
+      render text: 'Not found 🌚🌚', status: :not_found
     end
   end
 
