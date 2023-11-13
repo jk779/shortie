@@ -1,7 +1,7 @@
 version: '3'
 services:
   shortie:
-    build: .
+    image: jk779/shortie:latest
     command: bundle exec puma -C config/puma.rb
     volumes:
       - /home/michael/docker/shortie/sql:/app/db
