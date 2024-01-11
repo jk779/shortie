@@ -11,7 +11,7 @@ RUN apk add --update --no-cache build-base tzdata \
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 
-RUN bundle install --binstubs --jobs 8
+RUN bundle install --jobs 8 && bundle binstubs --all
 
 COPY . .
 
