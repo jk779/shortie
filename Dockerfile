@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-alpine
+FROM ruby:3.3-alpine
 
 ENV INSTALL_PATH /app
 WORKDIR $INSTALL_PATH
