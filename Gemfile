@@ -9,7 +9,7 @@ ruby '3.3.0'
 gem 'rails', '~> 7.0.8'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+gem 'sqlite3', force_ruby_platform: true # Workaround for musl fuckups https://github.com/sparklemotion/sqlite3-ruby/issues/434
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
